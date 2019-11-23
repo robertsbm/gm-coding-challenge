@@ -17,7 +17,12 @@ Clone the repo:
 git clone https://github.com/robertsbm/gm-coding-challenge.git
 ```
 
-Navigate to the project and start the app:
+Install the dependencies:
+```
+npm install
+```
+
+Start the app:
 ```
 expo start
 ```
