@@ -1,19 +1,16 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
+import HomeScreen from './src/screens/HomeScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>GM Coding Challenge</Text>
-    </View>
-  );
-}
+const navigator = createStackNavigator(
+    {
+        Home: HomeScreen,
+    },
+    {
+        initialRouteName: 'Home',
+        defaultNavigationOptions: {
+            title: 'App'
+        }
+    }
+);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default createAppContainer(navigator);
