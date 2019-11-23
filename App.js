@@ -1,14 +1,14 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import HomeScreen from './src/screens/HomeScreen';
+import FetchCommits from './src/screens/FetchCommits';
 
 const navigator = createStackNavigator(
     {
-        Home: HomeScreen,
+        Home: FetchCommits,
     },
     {
         initialRouteName: 'Home',
         defaultNavigationOptions: {
-            title: 'App'
+            title: 'GM Coding Challenge'
         }
     }
 );
