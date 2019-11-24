@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, StyleSheet} from 'react-native';
+import {Text, StyleSheet, View, ActivityIndicator, FlatList, TouchableOpacity} from 'react-native';
 
 export default class FetchCommits extends React.Component {
     constructor(props) {
@@ -23,8 +23,32 @@ export default class FetchCommits extends React.Component {
             });
     }
 
+    renderItem = (data) =>
+        <TouchableOpacity style={styles.list}>
+            <Text style={styles.author}>{data.item.commit.author.name}{"\n"}</Text>
+            <Text style={styles.commit}>{data.item.sha}{"\n"}</Text>
+            <Text style={styles.message}>{data.item.commit.message}</Text></TouchableOpacity>
+
     render() {
-        return <Text style={styles.text}>Hello World!</Text>;
+        if (this.state.isLoading) {
+            return (
+                <View style={{flex: 1, padding: 20}}>
+                    <Text>Fetching latest commits ...</Text>
+                    <ActivityIndicator/>
+                </View>
+            )
+        }
+
+        return (
+            <View style={styles.container}>
+                <FlatList
+                    data={this.state.dataSource}
+                    ItemSeparatorComponent={this.FlatListItemSeparator}
+                    renderItem={item => this.renderItem(item)}
+                    keyExtractor={item => item.sha.toString()}
+                />
+            </View>
+        );
     }
 }
 
