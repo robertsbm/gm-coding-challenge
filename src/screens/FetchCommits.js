@@ -43,8 +43,8 @@ export default class FetchCommits extends React.Component {
     render() {
         if (this.state.isLoading) {
             return (
-                <View style={{flex: 1, padding: 20}}>
-                    <Text>Fetching latest commits ...</Text>
+                <View style={styles.loadingView}>
+                    <Text style={styles.loading}>Fetching latest commits ...</Text>
                     <ActivityIndicator/>
                 </View>
             )
@@ -64,7 +64,33 @@ export default class FetchCommits extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    text: {
-        fontSize: 30
+    container: {
+        flex: 1,
+    },
+    list: {
+        paddingVertical: 4,
+        margin: 10,
+    },
+    author: {
+        fontWeight: 'bold',
+        fontSize: 20,
+    },
+    commit: {
+        fontSize: 14,
+        fontStyle: 'italic',
+    },
+    message: {
+        fontSize: 14,
+        fontStyle: 'normal',
+    },
+    loading: {
+        flex: 1,
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    loadingView: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 });
