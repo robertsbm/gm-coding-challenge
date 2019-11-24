@@ -7,6 +7,22 @@ export default class FetchCommits extends React.Component {
         this.state = {isLoading: true}
     }
 
+    componentDidMount() {
+        return fetch('https://api.github.com/repos/google-research/google-research/commits')
+            .then((response) => response.json())
+            .then((responseJson) => {
+
+                this.setState({
+                    isLoading: false,
+                    dataSource: responseJson,
+                });
+
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
     render() {
         return <Text style={styles.text}>Hello World!</Text>;
     }
