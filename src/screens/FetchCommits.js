@@ -23,6 +23,17 @@ export default class FetchCommits extends React.Component {
             });
     }
 
+    FlatListItemSeparator = () => {
+        return (
+            <View style={{
+                height: 1,
+                width: "100%",
+                backgroundColor: "rgba(150,150,150,1)",
+            }}
+            />
+        );
+    }
+
     renderItem = (data) =>
         <TouchableOpacity style={styles.list}>
             <Text style={styles.author}>{data.item.commit.author.name}{"\n"}</Text>
